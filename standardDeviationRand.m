@@ -1,0 +1,1 @@
+numvariable = 1000;rMat = zeros(numvariable,1);for sam = 1:numvariablex = randn(1);y = randn(1);rmat(sam,1) = sqrt(x^2 + y^2);end
