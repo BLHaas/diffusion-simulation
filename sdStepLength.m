@@ -1,0 +1,1 @@
+geter = uigetfile;reader = fopen(geter,'r');if reader == -1   disp('File open not succesful')else  ray = textscan(reader, '%d', 'headerlines',1);  closeresult = fclose(reader);  if closeresult == -1      disp('File close not succesful')  else  endend    %refMat = ray};%randomRandy = randi([1,10000]);%    stepLength = refMat{randomRandy};
