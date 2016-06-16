@@ -1,0 +1,1 @@
+matGrid = gridWalker;numSubStep = 1001;numSteps = randi([1 20], 1);for chooser = 1:floor(numSubStep/numSteps)    numStepMat(chooser + 1,:) = matGrid((chooser*numSteps),:);end
