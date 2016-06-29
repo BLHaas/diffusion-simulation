@@ -23,13 +23,13 @@ for mover = 1:numSubStep
         matGrid(mover+1, 2) = matGrid(mover, 2);
         if matGrid(mover +1,1) > leftBound
             % move it back to the right side
-            matGrid(mover+1,1) = rightBound +1;
+            matGrid(mover+1,1) = rightBound;
             matGrid(mover+1,2) = matGrid(mover+1,2);
         else
         end
     elseif position == 2
         % subtract one from 1st columns
-        matGrid(mover + 1 ,1) = matGrid(mover,1) - 1;
+        matGrid(mover + 1 ,1) = matGrid(mover,1);
         matGrid(mover+1, 2) = matGrid(mover, 2);
         if matGrid(mover +1,1) < rightBound
             % move it back to the left
