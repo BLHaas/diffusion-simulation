@@ -42,20 +42,20 @@ for mover = 1:numSubStep
         % add to second columns
         matGrid(mover + 1,2) = matGrid(mover,2) + 1;
         matGrid(mover+1, 1) = matGrid(mover, 1);
-        if matGrid(mover+1,2) > upperBound
-            matGrid(mover+1,2) = lowerBound + 1;
-            matGrid(mover+1,1) = matGrid(mover,1);
-        else
-        end
+%         if matGrid(mover+1,2) > upperBound
+%             matGrid(mover+1,2) = lowerBound + 1;
+%             matGrid(mover+1,1) = matGrid(mover,1);
+%         else
+%         end
     else
         %subtract from second columns
         matGrid(mover + 1,2) = matGrid(mover,2) - 1;
         matGrid(mover+1, 1) = matGrid(mover, 1);
-        if matGrid(mover+1,2) < lowerBound
-            matGrid(mover+1,2) = upperBound - 1;
-            matGrid(mover+1,1) = matGrid(mover,1);
-        else
-        end
+%         if matGrid(mover+1,2) < lowerBound
+%             matGrid(mover+1,2) = upperBound - 1;
+%             matGrid(mover+1,1) = matGrid(mover,1);
+%         else
+%         end
         
     end
 end
