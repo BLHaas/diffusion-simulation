@@ -34,7 +34,7 @@ for mover = 1:numSubStep
         if matGrid(mover +1,1) < rightBound
             % move it back to the left
             matGrid(mover+1,1) = leftBound -1;
-            matGrid(mover+1,2) = matGrid(mover,2);
+            matGrid(mover+1,2) = matGrid(mover+1,2);
         else
         end
         
