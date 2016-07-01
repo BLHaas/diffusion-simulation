@@ -1,4 +1,4 @@
-function matGrid = gridWalker
+%function matGrid = gridWalker
 % make a matrix of some sort with at least two columns, to store x and y values
 % also make a random number generator from 1 to 4 to signify left, right, up,
 % and down. Store these values that are given in a variable and put them in the
@@ -12,11 +12,13 @@ circleWidth = 2 * pi * lowerRadius;
 leftBound = circleWidth / 2;
 rightBound = -circleWidth / 2;
 numSubStep = 10001;
+xMat = zeros(numSubStep,1);
+zMat = zeros(numSubStep,1);
 matGrid = zeros(numSubStep,2);
 totalMat = zeros(numSubStep,3);
 angleMat = zeros(numSubStep,1);
 thetaMat = zeros(numSubStep,1);
-rMat = zeros(numSubStep,1);
+r = circleWidth / 2;
 
 for mover = 1:numSubStep
     position = randi(4);
@@ -64,10 +66,11 @@ for mover = 1:numSubStep
     end
     angleMat(mover,1) = matGrid(mover+1,2) / matGrid(mover+1,1);
     thetaMat(mover,1) = atan(angleMat(mover,1));
-    rMat(mover,1) = sqrt((matGrid(mover,1)^2) + (matGrid(mover,2)^2));
-    totalMat(mover,1) = rMat(mover,1);
-    totalMat(mover,2) = thetaMat(mover,1);
-    totalMat(mover,3) = matGrid(mover,2);
+    xMat(mover,1) = r * sin(thetaMat(mover,1));
+    zMat(mover,1) = r * cos(thetaMat(mover,1));
+    totalMat(mover,1) = xMat(mover,1);
+    totalMat(mover,3) = zMat(mover,1);
+    totalMat(mover,2) = matGrid(mover,2);
 end
 
 % simulationPlacer = uigetdir;
@@ -84,4 +87,4 @@ end
 %     disp('File did not close correctly');
 % else
 % end
-end
+%end
