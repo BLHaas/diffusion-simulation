@@ -13,6 +13,10 @@ leftBound = circleWidth / 2;
 rightBound = -circleWidth / 2;
 numSubStep = 10001;
 matGrid = zeros(numSubStep,2);
+totalMat = zeros(numSubStep,3);
+angleMat = zeros(numSubStep,1);
+thetaMat = zeros(numSubStep,1);
+rMat = zeros(numSubStep,1);
 
 for mover = 1:numSubStep
     position = randi(4);
@@ -58,20 +62,26 @@ for mover = 1:numSubStep
 %         end
         
     end
+    angleMat(mover,1) = matGrid(mover+1,2) / matGrid(mover+1,1);
+    thetaMat(mover,1) = atan(angleMat(mover,1));
+    rMat(mover,1) = sqrt((matGrid(mover,1)^2) + (matGrid(mover,2)^2));
+    totalMat(mover,1) = rMat(mover,1);
+    totalMat(mover,2) = thetaMat(mover,1);
+    totalMat(mover,3) = matGrid(mover,2);
 end
 
-simulationPlacer = uigetdir;
-fileName = [simulationPlacer filesep 'GridWalker Sim ' datestr(now, 'yy-mm-dd HH-MM-SS')];
-writer = fopen([fileName '.csv'], 'wt');
-if writer == -1
-    disp('File not Open Correctly');
-else
-end
-fprintf(writer,'x,y\n');
-fprintf(writer, '%d,%d,\n', matGrid');
-closeresult = fclose(writer);
-if closeresult == -1
-    disp('File did not close correctly');
-else
-end
+% simulationPlacer = uigetdir;
+% fileName = [simulationPlacer filesep 'GridWalker Sim ' datestr(now, 'yy-mm-dd HH-MM-SS')];
+% writer = fopen([fileName '.csv'], 'wt');
+% if writer == -1
+%     disp('File not Open Correctly');
+% else
+% end
+% fprintf(writer,'x,y\n');
+% fprintf(writer, '%d,%d,\n', matGrid');
+% closeresult = fclose(writer);
+% if closeresult == -1
+%     disp('File did not close correctly');
+% else
+% end
 end
