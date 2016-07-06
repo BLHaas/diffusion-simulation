@@ -85,8 +85,15 @@ else
 end
 fprintf(writer,'x,y\n');
 fprintf(writer, '%d,%d,\n', matGrid');
+fprintf(writer,'x,y\n');
+fprintf(writer, '%d,%d,\n', totalMat');
 closeresult = fclose(writer);
+closeresult2 = fclose(writer2);
 if closeresult == -1
+    disp('File did not close correctly');
+else
+end
+if closeresult2 == -1
     disp('File did not close correctly');
 else
 end
