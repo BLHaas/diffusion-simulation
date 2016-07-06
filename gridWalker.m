@@ -69,32 +69,32 @@ for mover = 1:numSubStep
     totalMat(mover,2) = matGrid(mover,2);
 end
 
-simulationPlacer = uigetdir;
-% fileName = [simulationPlacer filesep 'GridWalker Sim ' datestr(now, 'yy-mm-dd HH-MM-SS')];
-fileName = [simulationPlacer filesep 'GridWalker 1st 2D Sim'];
-fileName2 = [simulationPlacer filesep 'GridWalker 3D Sim'];
-writer = fopen([fileName '.csv'], 'wt');
-writer2 = fopen([fileName2 '.csv'], 'wt');
-if writer == -1
-    disp('File not Open Correctly');
-else
-end
-if writer2 == -1
-    disp('File not Open Correctly');
-else
-end
-fprintf(writer,'x,y\n');
-fprintf(writer, '%d,%d,\n', matGrid');
-fprintf(writer2,'x,y\n');
-fprintf(writer2, '%d,%d,\n', totalMat');
-closeresult = fclose(writer);
-closeresult2 = fclose(writer2);
-if closeresult == -1
-    disp('File did not close correctly');
-else
-end
-if closeresult2 == -1
-    disp('File did not close correctly');
-else
-end
+% simulationPlacer = uigetdir;
+% % fileName = [simulationPlacer filesep 'GridWalker Sim ' datestr(now, 'yy-mm-dd HH-MM-SS')];
+% fileName = [simulationPlacer filesep 'GridWalker 1st 2D Sim'];
+% % fileName2 = [simulationPlacer filesep 'GridWalker 3D Sim'];
+% writer = fopen([fileName '.csv'], 'wt');
+% % writer2 = fopen([fileName2 '.csv'], 'wt');
+% if writer == -1
+%     disp('File not Open Correctly');
+% else
+% end
+% % if writer2 == -1
+% %     disp('File not Open Correctly');
+% % else
+% % end
+% fprintf(writer,'x,y\n');
+% fprintf(writer, '%d,%d,\n', matGrid');
+% % fprintf(writer2,'x,y\n');
+% % fprintf(writer2, '%d,%d,\n', totalMat');
+% closeresult = fclose(writer);
+% % closeresult2 = fclose(writer2);
+% if closeresult == -1
+%     disp('File did not close correctly');
+% else
+% end
+% % if closeresult2 == -1
+%     disp('File did not close correctly');
+% else
+% end
 end
