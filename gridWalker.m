@@ -69,18 +69,19 @@ for mover = 1:numSubStep
     totalMat(mover,2) = matGrid(mover,2);
 end
 
-% simulationPlacer = uigetdir;
+simulationPlacer = uigetdir;
 % fileName = [simulationPlacer filesep 'GridWalker Sim ' datestr(now, 'yy-mm-dd HH-MM-SS')];
-% writer = fopen([fileName '.csv'], 'wt');
-% if writer == -1
-%     disp('File not Open Correctly');
-% else
-% end
-% fprintf(writer,'x,y\n');
-% fprintf(writer, '%d,%d,\n', matGrid');
-% closeresult = fclose(writer);
-% if closeresult == -1
-%     disp('File did not close correctly');
-% else
-% end
+fileName = [simulationPlacer filesep 'GridWalker 1st 2d Sim'];
+writer = fopen([fileName '.csv'], 'wt');
+if writer == -1
+    disp('File not Open Correctly');
+else
+end
+fprintf(writer,'x,y\n');
+fprintf(writer, '%d,%d,\n', matGrid');
+closeresult = fclose(writer);
+if closeresult == -1
+    disp('File did not close correctly');
+else
+end
 end
