@@ -71,9 +71,15 @@ end
 
 simulationPlacer = uigetdir;
 % fileName = [simulationPlacer filesep 'GridWalker Sim ' datestr(now, 'yy-mm-dd HH-MM-SS')];
-fileName = [simulationPlacer filesep 'GridWalker 1st 2d Sim'];
+fileName = [simulationPlacer filesep 'GridWalker 1st 2D Sim'];
+fileName2 = [simulationPlacer filesep 'GridWalker 3D Sim'];
 writer = fopen([fileName '.csv'], 'wt');
+writer2 = fopen([fileName2 '.csv'], 'wt');
 if writer == -1
+    disp('File not Open Correctly');
+else
+end
+if writer2 == -1
     disp('File not Open Correctly');
 else
 end
