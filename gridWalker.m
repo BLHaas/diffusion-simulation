@@ -1,12 +1,8 @@
-%function matGrid = gridWalker
+function totalMat = gridWalker
 % make a matrix of some sort with at least two columns, to store x and y values
 % also make a random number generator from 1 to 4 to signify left, right, up,
 % and down. Store these values that are given in a variable and put them in the
 % matrix.
-upperRadius = 3;
-circleHeight = pi * upperRadius;
-upperBound = circleHeight / 2;
-lowerBound = -circleHeight / 2;
 lowerRadius = 5;
 circleWidth = 2 * pi * lowerRadius;
 leftBound = circleWidth / 2;
@@ -64,10 +60,10 @@ for mover = 1:numSubStep
 %         end
         
     end
-    angleMat(mover,1) = matGrid(mover+1,2) / matGrid(mover+1,1);
-    thetaMat(mover,1) = atan(angleMat(mover,1));
-    xMat(mover,1) = r * sin(thetaMat(mover,1));
-    zMat(mover,1) = r * cos(thetaMat(mover,1));
+    angleMat(mover,1) = leftBound - matGrid(mover,1);
+    thetaMat(mover,1) = (angleMat(mover,1) / circleWidth) * (2 * pi);
+    zMat(mover,1) = r * sin(thetaMat(mover,1));
+    xMat(mover,1) = r * cos(thetaMat(mover,1));
     totalMat(mover,1) = xMat(mover,1);
     totalMat(mover,3) = zMat(mover,1);
     totalMat(mover,2) = matGrid(mover,2);
@@ -87,4 +83,4 @@ end
 %     disp('File did not close correctly');
 % else
 % end
-%end
+end
