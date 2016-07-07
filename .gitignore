@@ -1,5 +1,7 @@
 # no .csv data files
 *.csv
+# ignore an output .mat file
+3D gridWalker.mat
 # ignore Library folder
 Library/
 # no temp Matlab files
