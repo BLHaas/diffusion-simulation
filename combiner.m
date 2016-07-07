@@ -45,3 +45,7 @@ circlen2D = figure;
 plot(ncx,ncy);
 gridn2D = figure;
 plot(ngx,ngy);
+%saving everything
+allsaver = uigetdir;
+filename = [allsaver filesep 'All Simulations'];
+ 
