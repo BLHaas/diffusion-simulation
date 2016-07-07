@@ -1,4 +1,6 @@
-
+# no .csv data files
 *.csv
+# ignore Library folder
 Library/
+# no temp Matlab files
 *.m~
