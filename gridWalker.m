@@ -1,4 +1,4 @@
-function totalMat = gridWalker
+function matGrid = gridWalker
 % make a matrix of some sort with at least two columns, to store x and y values
 % also make a random number generator from 1 to 4 to signify left, right, up,
 % and down. Store these values that are given in a variable and put them in the
