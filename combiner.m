@@ -1,6 +1,9 @@
+% Getting Struct files in this order: CircleWalker, Gridwalker, stepFreq
+% structs.mat(output of their own sub-scripts: circleWalker, gridWalker, stepFrequency)
 chooser = uigetfile;
 chooser2 = uigetfile;
 chooser3 = uigetfile;
+
 allsaver = uigetdir;
 filename = [allsaver filesep 'circle2d'];
 filename2 = [allsaver filesep 'circle3d'];
