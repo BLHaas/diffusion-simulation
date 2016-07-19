@@ -1,6 +1,9 @@
+% Getting Struct files in this order: CircleWalker, Gridwalker, stepFreq
+% structs.mat(output of their own sub-scripts: circleWalker, gridWalker, stepFrequency)
 chooser = uigetfile;
 chooser2 = uigetfile;
 chooser3 = uigetfile;
+
 allsaver = uigetdir;
 filename = [allsaver filesep 'circle2d'];
 filename2 = [allsaver filesep 'circle3d'];
@@ -56,19 +59,12 @@ figure;
 plot3(sf3Dx,sf3Dy,sf3Dz);
 savefig(filename8);
 %going from 3d back to 2d
-cnew2dgrid = zeros(10001,2);
-gnew2dgrid = zeros(10001,2);
-sfnew2dgrid = zeros(501,2);
-for n = 1:10000
-cnew2dgrid(n,1) = circle.totalMat(n,1);
-cnew2dgrid(n,2) = circle.totalMat(n,2);
-gnew2dgrid(n,1) = grid.totalMat2(n,1);
-gnew2dgrid(n,2) = grid.totalMat2(n,2);
-end
-for n = 1:500
-    sfnew2dgrid(n,1) = sfreq.totalMat3(n,1);
-    sfnew2dgrid(n,2) = sfreq.totalMat3(n,2);
-end
+cnew2dgrid(:,1) = circle.totalMat(:,1);
+cnew2dgrid(:,2) = circle.totalMat(:,2);
+gnew2dgrid(:,1) = grid.totalMat2(:,1);
+gnew2dgrid(:,2) = grid.totalMat2(:,2);
+sfnew2dgrid(:,1) = sfreq.totalMat3(:,1);
+sfnew2dgrid(:,2) = sfreq.totalMat3(:,2);
 %new 2d points
 ncx = cnew2dgrid(:,1);
 ncy = cnew2dgrid(:,2);
