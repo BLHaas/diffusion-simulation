@@ -25,22 +25,22 @@ for mover = 1:numSubStep
         % add one to 1st columns
         outputdata.matGrid(mover + 1,1) = outputdata.matGrid(mover,1) + 1;
         outputdata.matGrid(mover+1, 2) = outputdata.matGrid(mover, 2);
-%         if outputdata.matGrid(mover +1,1) > leftBound
-%             % move it back to the right side
-%             outputdata.matGrid(mover+1,1) = rightBound + 1;
-%             outputdata.matGrid(mover+1,2) = outputdata.matGrid(mover+1,2);
-%         else
-%         end
+        %         if outputdata.matGrid(mover +1,1) > leftBound
+        %             % move it back to the right side
+        %             outputdata.matGrid(mover+1,1) = rightBound + 1;
+        %             outputdata.matGrid(mover+1,2) = outputdata.matGrid(mover+1,2);
+        %         else
+        %         end
     elseif position == 2
         % subtract one from 1st columns
         outputdata.matGrid(mover + 1 ,1) = outputdata.matGrid(mover,1)-1;
         outputdata.matGrid(mover+1, 2) = outputdata.matGrid(mover, 2);
-%         if outputdata.matGrid(mover +1,1) < rightBound
-%             % move it back to the left
-%             outputdata.matGrid(mover+1,1) = leftBound - 1;
-%             outputdata.matGrid(mover+1,2) = outputdata.matGrid(mover+1,2);
-%         else
-%         end
+        %         if outputdata.matGrid(mover +1,1) < rightBound
+        %             % move it back to the left
+        %             outputdata.matGrid(mover+1,1) = leftBound - 1;
+        %             outputdata.matGrid(mover+1,2) = outputdata.matGrid(mover+1,2);
+        %         else
+        %         end
     elseif position == 3
         % add to second columns
         outputdata.matGrid(mover + 1,2) = outputdata.matGrid(mover,2) + 1;
@@ -61,14 +61,14 @@ for mover = 1:numSubStep
         %         end
         
     end
-%     if abs(outputdata.matGrid(mover,1) - outputdata.matGrid(mover+1,1)) >= 28
-%         difference = outputdata.matGrid(mover,1) + outputdata.matGrid(mover+1,1)
-%         outputdata.edgemat(mover + 1,1) = outputdata.matGrid(mover,1) + difference;
-%         outputdata.edgemat(mover +1,2) = outputdata.matGrid(mover+1,2);
-%     else
-%         outputdata.edgemat(mover,1) = outputdata.matGrid(mover,1);
-%         outputdata.edgemat(mover,2) = outputdata.matGrid(mover,2);
-%     end
+    %     if abs(outputdata.matGrid(mover,1) - outputdata.matGrid(mover+1,1)) >= 28
+    %         difference = outputdata.matGrid(mover,1) + outputdata.matGrid(mover+1,1)
+    %         outputdata.edgemat(mover + 1,1) = outputdata.matGrid(mover,1) + difference;
+    %         outputdata.edgemat(mover +1,2) = outputdata.matGrid(mover+1,2);
+    %     else
+    %         outputdata.edgemat(mover,1) = outputdata.matGrid(mover,1);
+    %         outputdata.edgemat(mover,2) = outputdata.matGrid(mover,2);
+    %     end
     
     angleMat(mover,1) = leftBound - outputdata.matGrid(mover,1);
     thetaMat(mover,1) = (angleMat(mover,1) / circleWidth) * (2 * pi);
