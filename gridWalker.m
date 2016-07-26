@@ -16,8 +16,11 @@ angleMat = zeros(numSubStep,1);
 thetaMat = zeros(numSubStep,1);
 r = circleWidth / 2;
 outputdata.edgemat = zeros(numSubStep,2);
-
-
+thetamat = zeros(numSubStep,1);
+nxmat = zeros(numSubStep,1);
+nymat = zeros(numSubStep,1);
+anglemat = zeros(numSubStep,1);
+outputdata.newmat = zeros(numSubStep,3);
 for mover = 1:numSubStep
     position = randi(4);
     % 1 is right 2 is left 3 is up 4 is down.
@@ -77,36 +80,42 @@ for mover = 1:numSubStep
     outputdata.totalMat2(mover,1) = xMat(mover,1);
     outputdata.totalMat2(mover,3) = zMat(mover,1);
     outputdata.totalMat2(mover,2) = outputdata.matGrid(mover,2);
-    
+    anglemat(mover,1) = leftBound - outputdata.totalMat2(mover,1);
+    thetamat(mover,1) = (anglemat(mover,1) /circleWidth) * pi;
+    nxmat(mover,1) = r * cos(thetamat(mover,1));
+    nymat(mover,1) = r * sin(thetamat(mover,1));
+    outputdata.newmat(mover,1) = nxmat(mover,1);
+    outputdata.newmat(mover,2) = outputdata.totalMat2(mover,2);
+    outputdata.newmat(mover,3) = nymat(mover,1);
 end
 
-simulationPlacer = uigetdir;
-fileName3 = [simulationPlacer filesep 'GridWalker struct'];
-fileName = [simulationPlacer filesep 'GridWalker 1st 2D Sim'];
-fileName2 = [simulationPlacer filesep 'GridWalker 3D Sim'];
-writer = fopen([fileName '.csv'], 'wt');
-writer2 = fopen([fileName2 '.csv'], 'wt');
-if writer == -1
-    disp('File not Open Correctly');
-else
-end
-if writer2 == -1
-    disp('File not Open Correctly');
-else
-end
-fprintf(writer,'x,y\n');
-fprintf(writer, '%d,%d,\n', outputdata.matGrid');
-fprintf(writer2,'x,y,z\n');
-fprintf(writer2, '%d,%d,%d,\n', outputdata.totalMat2');
-closeresult = fclose(writer);
-closeresult2 = fclose(writer2);
-if closeresult == -1
-    disp('File did not close correctly');
-else
-end
-if closeresult2 == -1
-    disp('File did not close correctly');
-else
-end
-save(fileName3,'-struct','outputdata');
-end
+% simulationPlacer = uigetdir;
+% fileName3 = [simulationPlacer filesep 'GridWalker struct'];
+% fileName = [simulationPlacer filesep 'GridWalker 1st 2D Sim'];
+% fileName2 = [simulationPlacer filesep 'GridWalker 3D Sim'];
+% writer = fopen([fileName '.csv'], 'wt');
+% writer2 = fopen([fileName2 '.csv'], 'wt');
+% if writer == -1
+%     disp('File not Open Correctly');
+% else
+% end
+% if writer2 == -1
+%     disp('File not Open Correctly');
+% else
+% end
+% fprintf(writer,'x,y\n');
+% fprintf(writer, '%d,%d,\n', outputdata.matGrid');
+% fprintf(writer2,'x,y,z\n');
+% fprintf(writer2, '%d,%d,%d,\n', outputdata.totalMat2');
+% closeresult = fclose(writer);
+% closeresult2 = fclose(writer2);
+% if closeresult == -1
+%     disp('File did not close correctly');
+% else
+% end
+% if closeresult2 == -1
+%     disp('File did not close correctly');
+% else
+% end
+% save(fileName3,'-struct','outputdata');
+% end
