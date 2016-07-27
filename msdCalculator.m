@@ -1,6 +1,6 @@
 function msdCalculator
 %% About msdCalculator
-% Works with 1 track only. Reads data from csv file with 2 columns 
+% Works with 1 track only. Reads data from csv file with 2 columns
 % (X and Y positions). Calculates mean squared displacement over
 % first 75% of possible frame differences. Plots MSD vs. tau
 % (tau = frame difference)
@@ -13,7 +13,7 @@ xColumn = 1;
 yColumn = 2;
 
 %% Import data file
-disp ('Choose a data file.')
+disp('Choose a data file.')
 [inputFile, inputPath] = uigetfile('*.csv', ...
     'Choose a data file');
 if isequal(inputFile, 0) || isequal(inputPath, 0)
@@ -75,8 +75,13 @@ msdAxes.Title.String = ['MSD of ' inputFile(1:length(inputFile)-4)];
 %% Save data & figure
 disp('Data saved as *.csv, *.mat, and *.fig')
 % Write MSD data to *.csv file
-fprintf(outputFID, ['%d' ',' '%.4f' ',' '\n'], msdData');
-fprintf(outputFID, ['Input data from ' fullfile(inputPath, inputFile)]);
+ % Header
+ fprintf(outputFOD, 'frame difference' ',' 'MSD' ',' '\n');
+ % Data
+ fprintf(outputFID, ['%d' ',' '%.4f' ',' '\n'], msdData');
+ % Footer
+ fprintf(outputFID, ['Input data from ' fullfile(inputPath, inputFile)]);
+ fprintf(outputFID, datestr(now, 'yyyy-mm-dd HH:MM'));
 % Save MSD and displacement data to *.mat file
 save(fullfile(outputPath, outputFile), 'msdData', 'displacementData');
 % Save MSD figure to *.fig file
