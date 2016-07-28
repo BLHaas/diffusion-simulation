@@ -7,7 +7,7 @@ lowerRadius = 5;
 circleWidth = 2 * pi * lowerRadius;
 leftBound = circleWidth / 2;
 rightBound = -circleWidth / 2;
-numSubStep = 10001;
+numSubStep = 1001;
 xMat = zeros(numSubStep,1);
 zMat = zeros(numSubStep,1);
 outputdata.matGrid = zeros(numSubStep,2);
@@ -15,6 +15,8 @@ outputdata.totalMat2 = zeros(numSubStep,3);
 angleMat = zeros(numSubStep,1);
 thetaMat = zeros(numSubStep,1);
 r = circleWidth / 2;
+outputdata.edgemat = zeros(numSubStep,2);
+
 
 for mover = 1:numSubStep
     position = randi(4);
@@ -23,43 +25,51 @@ for mover = 1:numSubStep
         % add one to 1st columns
         outputdata.matGrid(mover + 1,1) = outputdata.matGrid(mover,1) + 1;
         outputdata.matGrid(mover+1, 2) = outputdata.matGrid(mover, 2);
-        if outputdata.matGrid(mover +1,1) > leftBound
-            % move it back to the right side
-            outputdata.matGrid(mover+1,1) = rightBound + 1;
-            outputdata.matGrid(mover+1,2) = outputdata.matGrid(mover+1,2);
-        else
-        end
+        %         if outputdata.matGrid(mover +1,1) > leftBound
+        %             % move it back to the right side
+        %             outputdata.matGrid(mover+1,1) = rightBound + 1;
+        %             outputdata.matGrid(mover+1,2) = outputdata.matGrid(mover+1,2);
+        %         else
+        %         end
     elseif position == 2
         % subtract one from 1st columns
-        outputdata.matGrid(mover + 1 ,1) = outputdata.matGrid(mover,1);
+        outputdata.matGrid(mover + 1 ,1) = outputdata.matGrid(mover,1)-1;
         outputdata.matGrid(mover+1, 2) = outputdata.matGrid(mover, 2);
-        if outputdata.matGrid(mover +1,1) < rightBound
-            % move it back to the left
-            outputdata.matGrid(mover+1,1) = leftBound - 1;
-            outputdata.matGrid(mover+1,2) = outputdata.matGrid(mover+1,2);
-        else
-        end
-        
+        %         if outputdata.matGrid(mover +1,1) < rightBound
+        %             % move it back to the left
+        %             outputdata.matGrid(mover+1,1) = leftBound - 1;
+        %             outputdata.matGrid(mover+1,2) = outputdata.matGrid(mover+1,2);
+        %         else
+        %         end
     elseif position == 3
         % add to second columns
         outputdata.matGrid(mover + 1,2) = outputdata.matGrid(mover,2) + 1;
         outputdata.matGrid(mover+1, 1) = outputdata.matGrid(mover, 1);
-%         if matGrid(mover+1,2) > upperBound
-%             matGrid(mover+1,2) = lowerBound + 1;
-%             matGrid(mover+1,1) = matGrid(mover,1);
-%         else
-%         end
+        %         if matGrid(mover+1,2) > upperBound
+        %             matGrid(mover+1,2) = lowerBound + 1;
+        %             matGrid(mover+1,1) = matGrid(mover,1);
+        %         else
+        %         end
     else
         %subtract from second columns
         outputdata.matGrid(mover + 1,2) = outputdata.matGrid(mover,2) - 1;
         outputdata.matGrid(mover+1, 1) = outputdata.matGrid(mover, 1);
-%         if matGrid(mover+1,2) < lowerBound
-%             matGrid(mover+1,2) = upperBound - 1;
-%             matGrid(mover+1,1) = matGrid(mover,1);
-%         else
-%         end
+        %         if matGrid(mover+1,2) < lowerBound
+        %             matGrid(mover+1,2) = upperBound - 1;
+        %             matGrid(mover+1,1) = matGrid(mover,1);
+        %         else
+        %         end
         
     end
+    %     if abs(outputdata.matGrid(mover,1) - outputdata.matGrid(mover+1,1)) >= 28
+    %         difference = outputdata.matGrid(mover,1) + outputdata.matGrid(mover+1,1)
+    %         outputdata.edgemat(mover + 1,1) = outputdata.matGrid(mover,1) + difference;
+    %         outputdata.edgemat(mover +1,2) = outputdata.matGrid(mover+1,2);
+    %     else
+    %         outputdata.edgemat(mover,1) = outputdata.matGrid(mover,1);
+    %         outputdata.edgemat(mover,2) = outputdata.matGrid(mover,2);
+    %     end
+    
     angleMat(mover,1) = leftBound - outputdata.matGrid(mover,1);
     thetaMat(mover,1) = (angleMat(mover,1) / circleWidth) * (2 * pi);
     zMat(mover,1) = r * sin(thetaMat(mover,1));
@@ -67,6 +77,7 @@ for mover = 1:numSubStep
     outputdata.totalMat2(mover,1) = xMat(mover,1);
     outputdata.totalMat2(mover,3) = zMat(mover,1);
     outputdata.totalMat2(mover,2) = outputdata.matGrid(mover,2);
+    
 end
 
 simulationPlacer = uigetdir;
