@@ -47,7 +47,7 @@ for iTau = 1:nTau
     sumFreq = sum(freqDisps);
     % Store CPD data in matrix
     for iUniqRow = 1:nUniqRow
-        currDispCol = 2*(iTau - 1); % odd columns are squared displacements
+        currDispCol = 2*iTau - 1; % odd columns are squared displacements
         currFreqCol = currDispCol + 1; % even columns are cumulative probabilities
         cpdData(iUniqRow, currDispCol) = uniqSqDisps(iUniqRow);
         cpdData(iUniqRow, currFreqCol) = freqDisps(iUniqRow)/sumFreq;
@@ -60,7 +60,7 @@ cpdFigure = figure;
 cpdFigure.Color = 'w'; % white figure background instead of gray
 hold on
 for iiTau = 1:maxPlotTau
-    currXCol = 2*(iiTau - 1); % odd columns are squared displacements
+    currXCol = 2*iiTau - 1; % odd columns are squared displacements
     currYCol = currXCol + 1; % even columns are cumulative probabilities
     % Plot
     plot(cpdData(:, currXCol), cpdData(:, currYCol));
@@ -75,7 +75,7 @@ cpdAxes.Title.String = ['CPD of ' inputFile(1:length(inputFile)-4)];
 disp('Data saved as *.csv, *.mat, and *.fig')
 % Write CPD data to *.csv file
  % Header
- fprintf(outputFOD, [repmat(['displacement' ',' 'probability' ','], nTau) '\n']);
+ fprintf(outputFID, [repmat(['displacement' ',' 'probability' ','], 1, nTau) '\n']);
  % Data
  fprintf(outputFID, ['%.4f' ',' '%.4f' ',' '\n'], cpdData');
  % Footer
